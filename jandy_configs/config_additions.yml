@@ -1,0 +1,46 @@
+# Jandy — OpenClaw Configuration Additions
+# Add these settings to your existing OpenClaw config.yml
+
+# Heartbeat Configuration
+heartbeat:
+  enabled: true
+  interval: 900  # 15 minutes (900 seconds) — checks if any scheduled message is due
+  quiet_hours:
+    start: "22:00"  # 10 PM — no messages after this
+    end: "07:00"    # 7 AM — no messages before this
+  timezone: "America/New_York"  # Update to your timezone
+
+# Brain / Model Routing
+brain:
+  conversation_model: "claude-sonnet-4-6"  # For real conversations — smarter, more nuanced
+  heartbeat_model: "claude-haiku-4-5-20251001"      # For scheduled messages — fast and cheap
+  max_tokens: 500                            # Keep Telegram messages concise
+  temperature: 0.7                           # Some personality variation
+
+# Memory Configuration
+memory:
+  enabled: true
+  categories:
+    - name: "accountability"
+      description: "AF day results, streaks, slips, triggers, and patterns"
+    - name: "fitness"
+      description: "Workout logs, exercise preferences, fitness goals and progress"
+    - name: "rationalizations"
+      description: "Which lies appeared, frequency, what countered them"
+    - name: "personal"
+      description: "Client context, ADHD patterns, motivation triggers, life events"
+  auto_save: true
+  max_memories_per_category: 100
+
+# Telegram Channel Configuration
+telegram:
+  bot_token: "${TELEGRAM_BOT_TOKEN}"  # Set via environment variable
+  chat_id: "REPLACE_WITH_YOUR_CHAT_ID"  # Get this by messaging the bot and checking updates
+  allowlist:
+    - "REPLACE_WITH_YOUR_TELEGRAM_USER_ID"  # Only respond to authorized user
+  parse_mode: "Markdown"
+  disable_web_page_preview: true
+
+# Skills
+skills:
+  - accountability-coach  # Located in skills/accountability-coach.md

@@ -1,0 +1,52 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: #0a0f0d;
+  color: #e8f5e9;
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+input::placeholder {
+  color: #3d4f44;
+}
+
+input:focus {
+  border-color: #22c55e !important;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0f0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e2e24;
+  border-radius: 2px;
+}
+
+/* Recharts tooltip override */
+.recharts-tooltip-wrapper {
+  outline: none;
+}
